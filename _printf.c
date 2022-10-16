@@ -7,7 +7,6 @@ void print_buffer(char buffer[], int *buff_ind);
  * @format: format.
  * Return: Printed chars.
  */
-
 int _printf(const char *format, ...)
 {
 	int i, printed = 0, printed_chars = 0;
@@ -19,7 +18,8 @@ int _printf(const char *format, ...)
 		return (-1);
 
 	va_start(list, format);
-	for (i = 0; format && format[i] != '\0'; i++)\
+
+	for (i = 0; format && format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
 		{
@@ -38,7 +38,7 @@ int _printf(const char *format, ...)
 			size = get_size(format, &i);
 			++i;
 			printed = handle_print(format, &i, list, buffer,
-					flags, width, precision, size);
+				flags, width, precision, size);
 			if (printed == -1)
 				return (-1);
 			printed_chars += printed;
@@ -51,6 +51,7 @@ int _printf(const char *format, ...)
 
 	return (printed_chars);
 }
+
 /**
  * print_buffer - Prints the contents of the buffer if it exist
  * @buffer: Array of chars
@@ -63,4 +64,3 @@ void print_buffer(char buffer[], int *buff_ind)
 
 	*buff_ind = 0;
 }
-
